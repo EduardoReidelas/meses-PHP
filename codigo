@@ -1,0 +1,16 @@
+<?php
+
+function calcularIdadeEmMeses($dataNascimento) {
+    $dataNascimentoObj = DateTime::createFromFormat('d/m/Y', $dataNascimento);
+    $dataAtual = new DateTime();
+    $diferenca = $dataAtual->diff($dataNascimentoObj);
+    $idadeEmMeses = ($diferenca->y * 12) + $diferenca->m;
+    return $idadeEmMeses;
+}
+
+echo "Digite sua data de nascimento (dd/mm/aaaa): ";
+$dataNascimento = trim(fgets(STDIN));
+$idadeEmMeses = calcularIdadeEmMeses($dataNascimento);
+echo "Sua idade em meses é: $idadeEmMeses meses.\n";
+
+?>
